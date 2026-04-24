@@ -1,20 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
+
 import authRoutes from "./routes/auth.routes";
-import { authMiddleware } from "./middleware/auth.middleware";
+import productRoutes from "./routes/product.routes";
 
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+
+// routes
 app.use("/auth", authRoutes);
+app.use("/products", productRoutes);
 
-app.get("/me", authMiddleware, (req, res) => {
-  res.json({ user: (req as any).user });
-});
-
-app.get("/", (req, res) => {
+// health check
+app.get("/", (_req, res) => {
   res.send("E-Commerce API is running 🚀");
 });
 
