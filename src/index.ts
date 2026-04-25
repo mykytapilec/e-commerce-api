@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 import authRoutes from "./routes/auth.routes";
 import productRoutes from "./routes/product.routes";
+import cartRoutes from "./routes/cart.routes";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 // routes
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
 
 // health check
 app.get("/", (_req, res) => {
